@@ -54,10 +54,12 @@ namespace Appointment_Scheduler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StartTime,EndTime,Cust_Id,Created")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("Name,ScheduledDate,StartTime,EndTime")] Appointment appointment)
         {
-            if (ModelState.IsValid)
+            
+            if (ModelState.IsValid && CheckRestritions(appointment))
             {
+                appointment.Created = DateTime.Now;
                 _context.Add(appointment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -65,6 +67,20 @@ namespace Appointment_Scheduler.Controllers
             return View(appointment);
         }
 
+        public bool CheckRestritions(Appointment app)
+        {
+            // TODO Adjust start and end times to have the same date as scheduled date
+
+            var listOfAppAtSameTime = _context.Appointment.Where(a => a.ScheduledDate == app.ScheduledDate
+            && (a.StartTime.TimeOfDay>=app.StartTime.TimeOfDay || a.StartTime.TimeOfDay <= app.StartTime.TimeOfDay)
+            && (a.EndTime.TimeOfDay <= app.EndTime.TimeOfDay   || a.EndTime.TimeOfDay >= app.EndTime.TimeOfDay)).ToList();
+            if (listOfAppAtSameTime.Count >= 3) { 
+
+                return false; }
+            else{
+                return true;
+            }
+        }
         // GET: Appointments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,7 +102,7 @@ namespace Appointment_Scheduler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,StartTime,EndTime,Cust_Id,Created")] Appointment appointment)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,ScheduledDate,StartTime,EndTime")] Appointment appointment)
         {
             if (id != appointment.Id)
             {
