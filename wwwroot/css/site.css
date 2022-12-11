@@ -14,14 +14,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 h1{
     font-size: 18px;
 }
-navbar-brand{
+navbar-brand {
     font-size: 20px;
+    
 }
+
 
 .row {
     margin-left: -5px;
@@ -45,6 +47,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    table-layout: fixed;
 }
 
 th, td {

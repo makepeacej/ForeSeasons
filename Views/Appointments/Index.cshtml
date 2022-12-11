@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Appointment_Scheduler.Models.Appointment>
+﻿@using Appointment_Scheduler.Controllers
+
+@model IEnumerable<Appointment_Scheduler.Models.Appointment> 
 
 @{
     ViewData["Title"] = "Index";
@@ -9,10 +11,15 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<asp:RadioButton id="todayRadio" Text="Today's Schedule'" Checked="True" onclick="" GroupName="RadioGroup1" runat="server" />
+<asp:RadioButton id="allRadio" Text="All Appointments'" Checked="false" GroupName="RadioGroup1" runat="server" />
+
+
+
 <div class="row">
     <div class="column">
         <h1><b>Appointment View</b></h1>
-        <table class="table">
+        <table class="table" id="indexTable">
             <thead>
                 <tr>
                     <th>
@@ -37,10 +44,10 @@
                     @Html.DisplayFor(modelItem => item.ScheduledDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StartTime.TimeOfDay.Hours)
+                    @Html.DisplayFor(modelItem => item.StartTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EndTime.TimeOfDay.Hours)
+                    @Html.DisplayFor(modelItem => item.EndTime)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Created)
@@ -64,11 +71,37 @@
                     <th>Number Of Appointments</th>
                 </tr>
                 <tr>
-                    <td>Thursday</td>
-                    <td>4</td>
+                    <td>Monday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Monday"]</td><!--Number for each day 0-->
                 </tr>
-            </thead>
-        </table>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Tuesday"]</td><!--Number for each day 1-->
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Wednesday"]</td><!--Number for each day 2-->
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Thursday"]</td><!--Number for each day 3-->
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Friday"]</td><!--Number for each day 4-->
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Saturday"]</td><!--Number for each day 5-->
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>@AppointmentsController.numOfApptDaily["Sunday"]</td><!--Number for each day 6-->
+                </tr>
+
+          </thead>
+          </table>
     </div>
 </div>
+
 

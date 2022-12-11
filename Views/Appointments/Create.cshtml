@@ -32,7 +32,11 @@
                 <input asp-for="EndTime" class="form-control" type="time" min="12:00"  max="19:00"/>
                 <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
-            
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label">Phone</label>
+                <input asp-for="Phone" class="form-control" type="tel"/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
