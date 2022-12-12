@@ -48,6 +48,7 @@ table {
     border-spacing: 0;
     width: 100%;
     table-layout: fixed;
+
 }
 
 th, td {
@@ -58,3 +59,27 @@ th, td {
 tr:nth-child(even) {
     background-color: #ebe6e6;
 }
+
+.carousel,
+.item,
+.active {
+    height: 100%;
+    width: 70%;
+    margin: auto;
+}
+
+.carousel-inner {
+    height: 80%;
+    width: 65%;
+    margin: auto;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 70%;
+    background-position: center;
+    background-size: cover;
+}
+

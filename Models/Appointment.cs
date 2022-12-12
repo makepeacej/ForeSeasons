@@ -8,6 +8,7 @@ namespace Appointment_Scheduler.Models
         public int Id { get; set; }
         [DisplayName("Full Name")]
         public string Name { get; set; }
+        [DisplayName("Scheduled Date")]
         public string ScheduledDate { get; set; }
         [DisplayName("Start Time")]
         [DataType(DataType.Time)]
