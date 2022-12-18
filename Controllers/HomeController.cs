@@ -18,7 +18,7 @@ namespace Appointment_Scheduler.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Simulator()
         {
             return View();
         }

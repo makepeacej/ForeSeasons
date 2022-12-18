@@ -15,15 +15,74 @@ html {
 
 body {
     margin-bottom: 60px;
+    font-family: sans-serif;
 }
 h1{
-    font-size: 18px;
+    font-size: 26px;
 }
 navbar-brand {
     font-size: 20px;
     
 }
+#welcomeSection {
+    background-color: #4a1e1e;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: -18px;
+    
+}
 
+#firstSection {
+    background-image: url('../images/golfsim3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    background-position: center;
+    margin: auto;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    opacity: .9;
+}
+
+#secondSection {
+    background-image: url('../images/golfsim1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    background-position: center;
+    margin: auto;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    opacity: .9;
+}
+
+#thirdSection {
+    background-image: url('../images/golfsim2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    background-position: center;
+    margin: auto;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    opacity: .9;
+}
 
 .row {
     margin-left: -5px;
@@ -42,6 +101,10 @@ navbar-brand {
     }
 }
 
+#uneekorImg{
+    width: clamp(200px, 40%, 300px);
+
+}
 /* Clearfix (clear floats) */
 .row::after {
     content: "";
@@ -69,12 +132,17 @@ tr:nth-child(even) {
 .carousel,
 .item,
 .active, .carousel-item {
-    width: clamp(200px, 100%, 600px);
-    height: clamp(100px, 100%, 400px);
+    width: 100%;
+    height: clamp(400px, 100%, 800px);
     aspect-ratio: 16/9;
-    padding: 5px;
     position: center;
-    margin: auto;
+    margin: 0px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 
@@ -84,5 +152,9 @@ tr:nth-child(even) {
     height: 70%;
     background-position: center;
     background-size: cover;
+}
+
+.container{
+    width:100%;
 }
 
