@@ -8,3 +8,4 @@ The project will include the ability to take appoinments for 3 of the simulators
 Project Details:
 ASP.NET Core MVC 6.0
 Hosting on Somee.com
+http://foreseasons.somee.com/
