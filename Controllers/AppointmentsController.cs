@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Appointment_Scheduler.Data;
 using Appointment_Scheduler.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Appointment_Scheduler.Controllers
 {
@@ -18,18 +19,30 @@ namespace Appointment_Scheduler.Controllers
         {
             _context = context;
         }
-       
+
 
         // GET: Appointments
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            
-            
+
+            deleteOldRecords();
             CountDailyAppts();
             return View(await _context.Appointment.ToListAsync());
         }
 
-        public void CountDailyAppts()
+        private void deleteOldRecords()
+        {
+            foreach (Appointment appt in _context.Appointment)
+            {
+                if (DateTime.Parse(appt.ScheduledDate) < DateTime.Today)
+                {
+                    _context.Remove(appt);
+                }
+            }
+            _context.SaveChanges();
+        } 
+        private void CountDailyAppts()
         {
             //Check for within the next 7 days including today
             //count the number for each day
@@ -56,7 +69,6 @@ namespace Appointment_Scheduler.Controllers
                 {
                     if (numOfApptDaily.ContainsKey(day)) numOfApptDaily[day]++;
                 }
-                //numOfApptDaily["Monday"] = list.Aggregate(a => a=="Monday").Count();
             }
             catch(Exception e)
             {
@@ -102,7 +114,7 @@ namespace Appointment_Scheduler.Controllers
                 appointment.StartTime = DateTime.Parse(appointment.ScheduledDate) + appointment.StartTime.TimeOfDay;
                 _context.Add(appointment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Home");
             }
             return View(appointment);
         }

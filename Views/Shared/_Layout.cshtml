@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>@ViewData["Title"] - Fore Seaons - Golfing Experience </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" runat="server"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" runat="server" />
@@ -31,14 +32,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Appointments" asp-action="Index">Schedule</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Appointments" asp-action="Index">Schedule</a>
+                            </li>
+                        }else{
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Appointments" asp-action="Create">Schedule</a>
+                            </li>
+                        }
+                        
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Simulator">Simulators</a>
                         </li>
                     </ul>
-                    <!--<partial name="_LoginPartial" />-->
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -55,7 +64,6 @@
             Contact: (555) 555-5555  <br />
             Address: Port Orchard, WA 98999<br />
             Email: foreseasons@foreseasonsgolfexperience.com
-            <partial name="_LoginPartial" />
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
