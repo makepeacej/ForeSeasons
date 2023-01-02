@@ -22,7 +22,7 @@ namespace Appointment_Scheduler.Controllers
 
 
         // GET: Appointments
-        [Authorize]
+        
         public async Task<IActionResult> Index()
         {
 
