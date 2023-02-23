@@ -10,4 +10,7 @@ ASP.NET Core MVC 6.0
 Hosting on Somee.com
 http://foreseasons.somee.com/
 
-![Home Page Demo](demoHome.PNG)
+<img src="/DemoImages/homeDemo.PNG">
+<img src="/DemoImages/scheduleDemo.PNG">
+<img src="/DemoImages/SimDemo.PNG">
+<img src="/DemoImages/employeeLoginDemo.PNG">
