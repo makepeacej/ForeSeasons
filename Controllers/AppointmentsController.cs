@@ -26,12 +26,12 @@ namespace Appointment_Scheduler.Controllers
         public async Task<IActionResult> Index()
         {
 
-            deleteOldRecords();
+            //deleteOldRecords();
             CountDailyAppts();
             return View(await _context.Appointment.ToListAsync());
         }
 
-        private void deleteOldRecords()
+        /*private void deleteOldRecords()
         {
             foreach (Appointment appt in _context.Appointment)
             {
@@ -41,7 +41,7 @@ namespace Appointment_Scheduler.Controllers
                 }
             }
             _context.SaveChanges();
-        } 
+        } */
         private void CountDailyAppts()
         {
             //Check for within the next 7 days including today
