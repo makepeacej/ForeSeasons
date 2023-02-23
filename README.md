@@ -9,3 +9,5 @@ Project Details:
 ASP.NET Core MVC 6.0
 Hosting on Somee.com
 http://foreseasons.somee.com/
+
+!(Home Page Demo)[demoHome.PNG]
